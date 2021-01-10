@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from core.models import Widget
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
+    model = Widget
+    context_object_name = 'widgets'
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
